@@ -1,8 +1,6 @@
 package com.gottskalksson.carmanager.entity;
 
 import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
