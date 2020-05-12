@@ -2,6 +2,7 @@ package com.gottskalksson.carmanager.controllers;
 
 import com.gottskalksson.carmanager.entity.User;
 import com.gottskalksson.carmanager.repositories.UserRepository;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -32,12 +33,11 @@ public class RegisterController {
     public String validateUser (@ModelAttribute @Valid User user, BindingResult result) {
 
         if (!result.hasErrors()){
+            user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt()));
             userRepository.save(user);
-            return "redirect: /login";
+            return "redirect:/login";
         } else {
             return "register-form";
         }
     }
-
-
 }
