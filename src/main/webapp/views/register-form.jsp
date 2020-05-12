@@ -1,16 +1,45 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: adam
-  Date: 12.05.2020
-  Time: 11:09
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
-    <title>$Title$</title>
+    <title>Rejestracja konta</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+
 </head>
 <body>
-$END$
+<div class="container">
+    <h1 class="title">Załóż konto</h1>
+</div>
+<div class="row h-100">
+    <div class="col-sm-12 my-auto">
+        <div class="card card-block w-25 mx-auto">
+<form:form modelAttribute="user" method="post" action="/register">
+    <form:label path="email">E-Mail: </form:label>
+    <form:input path="email"/><br>
+    <form:errors path="email" cssClass="error"/><br>
+
+    <form:label path="password">Hasło: </form:label>
+    <form:password path="password"/><br>
+    <form:errors path="password" cssClass="error"/><br>
+
+    <form:label path="name">Podaj swoje imię: </form:label>
+    <form:input path="name"/><br>
+    <form:errors path="name" cssClass="error"/><br>
+
+    <form:hidden path="id"/>
+
+    <input type="submit" value="Załóż konto">
+
+</form:form>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
