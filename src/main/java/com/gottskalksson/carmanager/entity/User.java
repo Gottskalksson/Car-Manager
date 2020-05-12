@@ -1,5 +1,6 @@
 package com.gottskalksson.carmanager.entity;
 
+import com.gottskalksson.carmanager.validator.UniqueEmail;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.validator.constraints.UniqueElements;
@@ -18,9 +19,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @UniqueElements
     @Email
     @NotEmpty
+    @Column(unique = true)
+    @UniqueEmail
     private String email;
 
     @NotEmpty
