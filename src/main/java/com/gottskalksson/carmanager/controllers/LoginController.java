@@ -37,7 +37,7 @@ public class LoginController {
             model.addAttribute("user", email);
             return "redirect:/dashboard";
         } else {
-            return "/login";
+            return "redirect:/login";
         }
     }
 
