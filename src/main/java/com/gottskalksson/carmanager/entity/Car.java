@@ -26,6 +26,11 @@ public class Car {
     @Size(max = 30)
     private String model;
 
+    @NotEmpty
+    @Size(max = 15)
+    @Column(unique = true)
+    private String plateNumber;
+
     @Min(1800)
     private int yearProduction;
 
