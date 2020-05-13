@@ -37,7 +37,8 @@ public class LoginController {
             model.addAttribute("user", email);
             return "redirect:/dashboard";
         } else {
-            return "redirect:/login";
+            model.addAttribute("errorMessage", "Niepoprawny email i/lub hasło");
+            return "login-form";
         }
     }
 
