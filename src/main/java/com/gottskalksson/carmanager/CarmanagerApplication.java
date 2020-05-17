@@ -2,6 +2,7 @@ package com.gottskalksson.carmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.LocaleContextResolver;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
@@ -9,6 +10,7 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import java.util.Locale;
 
 @SpringBootApplication
+@ServletComponentScan
 public class CarmanagerApplication {
 
     public static void main(String[] args) {
