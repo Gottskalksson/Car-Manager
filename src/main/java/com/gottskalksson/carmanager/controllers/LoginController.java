@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @SessionAttributes("user")
@@ -24,16 +26,24 @@ public class LoginController {
     }
 
     @GetMapping("/login")
-    public String login () {
-        return "login-form";
+    public String login (HttpServletRequest request) {
+        if (request.getSession().getAttribute("user") != null) {
+            return "redirect:dashboard";
+        } else {
+            return "login-form";
+        }
     }
 
     @PostMapping("/login")
-    public String validateLogin(HttpServletRequest request, Model model) {
+    public String validateLogin(HttpServletRequest request, HttpServletResponse response, Model model) {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         if (checkUserData(email, password)) {
+            Cookie cookie = new Cookie("user", email);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+
             model.addAttribute("user", email);
             return "redirect:/dashboard";
         } else {
