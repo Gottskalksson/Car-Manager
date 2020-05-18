@@ -44,7 +44,7 @@ public class LoginController {
             cookie.setPath("/");
             response.addCookie(cookie);
 
-            model.addAttribute("user", email);
+            model.addAttribute("user", userRepository.findByEmail(email));
             return "redirect:/dashboard";
         } else {
             model.addAttribute("errorMessage", "Niepoprawny email i/lub hasło");
