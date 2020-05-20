@@ -4,14 +4,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Dodaj/Edytuj samochód</title>
+    <title>Edytuj samochód</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 </head>
 <body>
 <%--<c:set var="now" value="<% = new java.util.Date() %>"/>--%>
-<form:form modelAttribute="car" method="post" action="/dashboard/cars/add">
+<form:form modelAttribute="car" method="post" action="/dashboard/cars/edit">
     <form:label path="brand">Marka: </form:label>
     <form:input path="brand"/><br>
     <form:errors path="brand" cssClass="errorMessage"/><br>
@@ -22,7 +22,7 @@
 
     <form:label path="plateNumber">Numer rejestracyjny: </form:label>
     <form:input path="plateNumber"/><br>
-    <form:errors path="plateNumber" cssClass="errorMessage"/><br>
+    <form:errors path="plateNumber" cssStyle="visibility: ${hidden}"/><br>
 
     <form:label path="yearProduction">Rok produkcji: </form:label>
     <form:input path="yearProduction"/><br>
