@@ -3,9 +3,9 @@ package com.gottskalksson.carmanager.entity;
 import com.gottskalksson.carmanager.validator.UniqueEmail;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
@@ -31,4 +31,12 @@ public class User {
     @NotEmpty
     private String name;
 
+    public static long getUserIdFromSession(HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            user = new User();
+        }
+
+        return user.getId();
+    }
 }
