@@ -5,13 +5,18 @@ import com.gottskalksson.carmanager.entity.User;
 import com.gottskalksson.carmanager.repositories.CarRepository;
 import com.gottskalksson.carmanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,7 +56,24 @@ public class CarController {
     public String editCar(@PathVariable long id, Model model) {
         Optional<Car> carById = carRepository.findById(id);
         model.addAttribute("car", carById.orElse(null));
-        return "car-form";
+        return "car-edit-form";
+    }
+
+    @PostMapping("/edit")
+    public String validateEditedCar(@ModelAttribute @Valid Car car, BindingResult result, Model model) {
+        long id = car.getId();
+        Car firstCar = carRepository.getOne(id);
+        boolean b = id == carRepository.findCarByPlateNumber(car.getPlateNumber()).getId();
+        car.setUser(firstCar.getUser());
+        if (result.getErrorCount() == 1 && b) {
+            carRepository.save(car);
+            return "redirect:/dashboard/cars/list";
+        } else {
+            if (b) {
+                model.addAttribute("hidden", "hidden");
+            }
+            return "car-edit-form";
+        }
     }
 
     @GetMapping("/list")
@@ -68,6 +90,24 @@ public class CarController {
         carToDelete.ifPresent(carRepository::delete);
         return "redirect:/dashboard/cars/list";
     }
+
+    @ModelAttribute("userName")
+    public String userName(HttpServletRequest request) {
+        try {
+            User user = (User) request.getSession().getAttribute("user");
+            return user.getName();
+        } catch (NullPointerException e) {
+            return "";
+        }
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
+    }
+
 
 
 }
