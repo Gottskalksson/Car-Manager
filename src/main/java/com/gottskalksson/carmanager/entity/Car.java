@@ -1,12 +1,17 @@
 package com.gottskalksson.carmanager.entity;
 
+import com.gottskalksson.carmanager.validator.UniquePlateNumber;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
+import java.time.Year;
+import java.util.Date;
 
 @Entity
 @Table(name = "cars")
@@ -29,10 +34,11 @@ public class Car {
     @NotEmpty
     @Size(max = 15)
     @Column(unique = true)
+    @UniquePlateNumber
     private String plateNumber;
 
-    @Min(1800)
-    private int yearProduction;
+    @PastOrPresent
+    private Year yearProduction;
 
     private int engineCapacity;
 
@@ -41,10 +47,12 @@ public class Car {
     @ManyToOne
     private User user;
 
-    @NotEmpty
-    private String motDate;
+    @FutureOrPresent
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date motDate;
 
-    @NotEmpty
-    private String insuranceDate;
+    @FutureOrPresent
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date insuranceDate;
 
 }
