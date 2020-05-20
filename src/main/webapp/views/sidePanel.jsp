@@ -4,8 +4,8 @@
         <table>
             <ul>
                 <li><a href="/edit">Edycja konta</a> </li>
-                <li><a href="/services/add">Dodaj serwis</a> </li>
-                <li><a href="/services/list">Lista serwisów</a></li>
+                <li><a href="/dashboard/services/add">Dodaj serwis</a> </li>
+                <li><a href="/dashboard/services/list">Lista serwisów</a></li>
                 <li><a href="/logout">Wyloguj się</a></li>
             </ul>
         </table>
