@@ -10,7 +10,6 @@
 
 </head>
 <body>
-<%--<c:set var="now" value="<% = new java.util.Date() %>"/>--%>
 <form:form modelAttribute="car" method="post" action="/dashboard/cars/add">
     <form:label path="brand">Marka: </form:label>
     <form:input path="brand"/><br>
@@ -28,7 +27,7 @@
     <form:input path="yearProduction"/><br>
     <form:errors path="yearProduction" cssClass="errorMessage"/><br>
 
-    <form:label path="engineCapacity">Pojemność silnika: </form:label>
+    <form:label path="engineCapacity">Pojemność silnika w cm<sub>3</sub>: </form:label>
     <form:input path="engineCapacity"/><br>
     <form:errors path="engineCapacity" cssClass="errorMessage"/><br>
 
@@ -45,7 +44,6 @@
     <form:errors path="insuranceDate" cssClass="errorMessage"/><br>
 
     <form:hidden path="id"/>
-    <%--    <form:hidden path="user"/>--%>
 
     <input type="submit" value="Zapisz">
 
