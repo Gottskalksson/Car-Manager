@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface ServiceRepository extends JpaRepository<Service, Long> {
 
-    List<Service> findFirst5ByOrderByIdDesc();
+    List<Service> findFirst5ByUserIdOrderByIdDesc(long id);
+
+    List<Service> findAllByUserId (long id);
 }
