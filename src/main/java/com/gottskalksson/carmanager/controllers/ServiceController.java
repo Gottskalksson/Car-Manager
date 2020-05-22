@@ -40,7 +40,7 @@ public class ServiceController {
 
     @GetMapping("/add")
     public String addService(Model model, HttpServletRequest request) {
-        model.addAttribute("service", new Service());
+        model.addAttribute("newService", new Service());
         long userId = User.getUserIdFromSession(request);
         List<Car> carList = carRepository.findAllByUserId(userId);
         model.addAttribute("carList", carList);
@@ -66,7 +66,7 @@ public class ServiceController {
         Optional<Service> serviceById = serviceRepository.findById(userId);
         Service service = serviceById.orElse(new Service());
         if (service.getUser().getId() == userId) {
-            model.addAttribute("sevice", service);
+            model.addAttribute("userService", service);
             return "service-form";
         } else {
             return "redirect:/dashboard/services/list";
