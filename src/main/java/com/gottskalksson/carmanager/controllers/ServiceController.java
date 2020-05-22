@@ -1,5 +1,6 @@
 package com.gottskalksson.carmanager.controllers;
 
+import com.gottskalksson.carmanager.entity.Car;
 import com.gottskalksson.carmanager.entity.Service;
 import com.gottskalksson.carmanager.entity.User;
 import com.gottskalksson.carmanager.repositories.CarRepository;
@@ -38,8 +39,11 @@ public class ServiceController {
     }
 
     @GetMapping("/add")
-    public String addService(Model model) {
+    public String addService(Model model, HttpServletRequest request) {
         model.addAttribute("service", new Service());
+        long userId = User.getUserIdFromSession(request);
+        List<Car> carList = carRepository.findAllByUserId(userId);
+        model.addAttribute("carList", carList);
         return "service-form";
     }
 
