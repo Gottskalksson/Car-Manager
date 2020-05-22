@@ -36,8 +36,6 @@ public class DashboardController {
         long userId = User.getUserIdFromSession(request);
         List<Service> lastFiveServices = serviceRepository.findFirst5ByUserIdOrderByIdDesc(userId);
         model.addAttribute("serviceList", lastFiveServices);
-        List<Car> carsList = carRepository.findAllByUserId(userId);
-        model.addAttribute("carsList", carsList);
         return "dashboard";
     }
 
