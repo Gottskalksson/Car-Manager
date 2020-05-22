@@ -9,7 +9,6 @@ import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,23 +52,29 @@ public class CarController {
     }
 
     @RequestMapping("/edit/{id}")
-    public String editCar(@PathVariable long id, Model model) {
+    public String editCar(@PathVariable long id, Model model, HttpServletRequest request) {
+        long userId = User.getUserIdFromSession(request);
         Optional<Car> carById = carRepository.findById(id);
-        model.addAttribute("car", carById.orElse(null));
-        return "car-edit-form";
+        Car car = carById.orElse(new Car());
+        if (car.getUser().getId() == userId) {
+            model.addAttribute("car", carById.orElse(null));
+            return "car-edit-form";
+        } else {
+            return "redirect:/dashboard/cars/list";
+        }
     }
 
     @PostMapping("/edit")
     public String validateEditedCar(@ModelAttribute @Valid Car car, BindingResult result, Model model) {
         long id = car.getId();
         Car firstCar = carRepository.getOne(id);
-        boolean b = id == carRepository.findCarByPlateNumber(car.getPlateNumber()).getId();
+        boolean isTheSamePlateInDb = (id == carRepository.findCarByPlateNumber(car.getPlateNumber()).getId());
         car.setUser(firstCar.getUser());
-        if (result.getErrorCount() == 1 && b) {
+        if (result.getErrorCount() == 1 && isTheSamePlateInDb) {
             carRepository.save(car);
             return "redirect:/dashboard/cars/list";
         } else {
-            if (b) {
+            if (isTheSamePlateInDb) {
                 model.addAttribute("hidden", "hidden");
             }
             return "car-edit-form";
@@ -85,9 +90,13 @@ public class CarController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String deleteCar(@PathVariable long id) {
+    public String deleteCar(@PathVariable long id,HttpServletRequest request) {
+        long userId = User.getUserIdFromSession(request);
         Optional<Car> carToDelete = carRepository.findById(id);
-        carToDelete.ifPresent(carRepository::delete);
+        Car car = carToDelete.orElse(new Car());
+        if (userId == car.getUser().getId()) {
+            carToDelete.ifPresent(carRepository::delete);
+        }
         return "redirect:/dashboard/cars/list";
     }
 
