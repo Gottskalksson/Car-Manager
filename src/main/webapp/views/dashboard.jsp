@@ -24,17 +24,6 @@
             </c:forEach>
         </div>
     </div>
-    <div class="col-sm-6 my-auto">
-        <div class="card card-block w-25 mx-auto">
-            <h2>Moje pojazdy:</h2>
-            <c:forEach items="${carsList}" var="car">
-                <p>${car.plateNumber}</p>
-                <p>${car.brand}</p>
-                <p>${car.model}</p>
-                <p><a href="/dashboard/cars/${car.id}">Szczegóły</a></p>
-            </c:forEach>
-        </div>
-    </div>
 </div>
 </div>
 </body>
