@@ -1,11 +1,15 @@
 package com.gottskalksson.carmanager.entity;
 
 import lombok.Getter;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.text.DecimalFormat;
+import java.util.Date;
 
 @Entity
 @Table(name = "services")
@@ -35,8 +39,11 @@ public class Service {
     @Min(0)
     private double priceForJob;
 
-    @NotEmpty
     private String totalPrice;
+
+    @PastOrPresent
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private Date serviceDate;
 
     public void setId(long id) {
         this.id = id;
@@ -71,6 +78,7 @@ public class Service {
         this.totalPrice = df.format(this.priceForItems + this.priceForJob);
     }
 
-
-
+    public void setServiceDate(Date serviceDate) {
+        this.serviceDate = serviceDate;
+    }
 }
