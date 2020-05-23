@@ -6,14 +6,18 @@ import com.gottskalksson.carmanager.entity.User;
 import com.gottskalksson.carmanager.repositories.CarRepository;
 import com.gottskalksson.carmanager.repositories.ServiceRepository;
 import com.gottskalksson.carmanager.repositories.UserRepository;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -107,6 +111,13 @@ public class ServiceController {
         typeServices.add("Przegląd");
         typeServices.add("Wymiana/Naprawa");
         return typeServices;
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.setLenient(true);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
     }
 
 
