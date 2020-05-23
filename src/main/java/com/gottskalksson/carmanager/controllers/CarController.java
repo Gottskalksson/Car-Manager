@@ -54,10 +54,10 @@ public class CarController {
     @RequestMapping("/edit/{id}")
     public String editCar(@PathVariable long id, Model model, HttpServletRequest request) {
         long userId = User.getUserIdFromSession(request);
-        Optional<Car> carById = carRepository.findById(id);
-        Car car = carById.orElse(new Car());
+        Car car = carRepository.findById(id)
+            .orElse(new Car());
         if (car.getUser().getId() == userId) {
-            model.addAttribute("car", carById.orElse(null));
+            model.addAttribute("car", car);
             return "car-edit-form";
         } else {
             return "redirect:/dashboard/cars/list";
