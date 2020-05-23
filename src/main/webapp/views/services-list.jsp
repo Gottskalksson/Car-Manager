@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<html>
+<html lang="pl">
 <head>
     <title>Lista serwisów</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -19,10 +19,12 @@
             <h2>Lista serwisów:</h2>
             <c:forEach items="${serviceList}" var="service">
                 <p>${service.car.plateNumber}</p>
+                <p>${service.serviceDate}</p>
                 <p>${service.car.brand}</p>
                 <p>${service.description}</p>
                 <p>${service.totalPrice}</p>
-                <p><a href="/dashboard/service/delete/${service.id}">Usuń</a></p>
+                <p><a href="/dashboard/services/edit/${service.id}">Edytuj</a></p>
+                <p><a href="/dashboard/services/delete/${service.id}">Usuń</a></p>
             </c:forEach>
         </div>
     </div>

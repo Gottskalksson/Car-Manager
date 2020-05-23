@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<html lang="pl">
 <head>
     <title>Dodaj/Edytuj serwis</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -33,6 +33,11 @@
     <form:label path="priceForJob">Cena za robociznę: </form:label>
     <form:input path="priceForJob" /><br>
     <form:errors path="priceForJob" cssClass="errorMessage"/><br>
+
+    <form:label path="serviceDate">Data serwisu: </form:label>
+    <form:input path="serviceDate"/><br>
+    <form:errors path="serviceDate" cssClass="errorMessage"/><br>
+
 
     <form:hidden path="id"/>
 

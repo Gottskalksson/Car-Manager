@@ -17,7 +17,9 @@
         <div class="card card-block w-25 mx-auto">
             <h2>Ostatnie 5 serwisów:</h2>
             <c:forEach items="${serviceList}" var="service">
-                <p>${service.car}</p>
+                <p>${service.serviceDate}</p>
+                <p>${service.car.plateNumber}</p>
+                <p>${service.car.brand} ${service.car.model}</p>
                 <p>${service.description}</p>
                 <p>${service.totalPrice}</p>
                 <p><a href="/dashboard/service/${service.id}">Szczegóły</a></p>
