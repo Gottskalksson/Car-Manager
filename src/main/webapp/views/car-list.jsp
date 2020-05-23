@@ -22,7 +22,7 @@
     <p>Marka: ${car.brand}</p>
     <p>Model: ${car.model}</p>
     <p>Rok produkcji: ${car.yearProduction}</p>
-    <p>Pojemność silnika w cm<sub>3</sub>: ${car.engineCapacity}</p>
+    <p>Pojemność silnika w cm<sup>3</sup>: ${car.engineCapacity}</p>
     <p>Moc w KM: ${car.horsePower}</p>
     <p>Przegląd ważny do: <spring:eval expression="car.motDate"/></p>
     <p>Ubezpieczenie ważne do: <spring:eval expression="car.insuranceDate"/></p>

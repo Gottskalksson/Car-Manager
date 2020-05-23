@@ -27,7 +27,7 @@
     <form:input path="yearProduction"/><br>
     <form:errors path="yearProduction" cssClass="errorMessage"/><br>
 
-    <form:label path="engineCapacity">Pojemność silnika w cm<sub>3</sub>: </form:label>
+    <form:label path="engineCapacity">Pojemność silnika w cm<sup>3</sup>: </form:label>
     <form:input path="engineCapacity"/><br>
     <form:errors path="engineCapacity" cssClass="errorMessage"/><br>
 
