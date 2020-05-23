@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,10 +41,8 @@ public class ServiceController {
 
     @GetMapping("/add")
     public String addService(Model model, HttpServletRequest request) {
-        model.addAttribute("newService", new Service());
+        model.addAttribute("service", new Service());
         long userId = User.getUserIdFromSession(request);
-        List<Car> carList = carRepository.findAllByUserId(userId);
-        model.addAttribute("carList", carList);
         return "service-form";
     }
 
@@ -53,6 +52,7 @@ public class ServiceController {
             long userId = User.getUserIdFromSession(request);
             Optional<User> findById = userRepository.findById(userId);
             service.setUser(findById.orElse(null));
+            service.setTotalPrice();
             serviceRepository.save(service);
             return "redirect:/dashboard/services/list";
         } else {
@@ -63,10 +63,10 @@ public class ServiceController {
     @RequestMapping("/edit/{id}")
     public String editService (@PathVariable long id, Model model, HttpServletRequest request) {
         long userId = User.getUserIdFromSession(request);
-        Optional<Service> serviceById = serviceRepository.findById(userId);
-        Service service = serviceById.orElse(new Service());
+        Service service = serviceRepository.findById(userId)
+                .orElse(new Service());
         if (service.getUser().getId() == userId) {
-            model.addAttribute("userService", service);
+            model.addAttribute("service", service);
             return "service-form";
         } else {
             return "redirect:/dashboard/services/list";
@@ -94,6 +94,19 @@ public class ServiceController {
         } catch (NullPointerException e) {
             return "";
         }
+    }
+
+    @ModelAttribute("cars")
+    public List<Car> cars(HttpServletRequest request) {
+        return carRepository.findAllByUserId(User.getUserIdFromSession(request));
+    }
+
+    @ModelAttribute("typeService")
+    public List<String> typeServices() {
+        ArrayList<String> typeServices  = new ArrayList<>();
+        typeServices.add("Przegląd");
+        typeServices.add("Wymiana/Naprawa");
+        return typeServices;
     }
 
 
