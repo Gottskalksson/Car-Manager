@@ -37,16 +37,21 @@ public class ServiceController {
 
     @GetMapping("/list")
     public String servicesList(Model model, HttpServletRequest request) {
-        long userId = User.getUserIdFromSession(request);
-        List<Service> allUsersServices = serviceRepository.findAllByUserId(userId);
-        model.addAttribute("serviceList", allUsersServices);
+        model.addAttribute("hidden", "hidden");
+        return "services-list";
+    }
+
+    @PostMapping("/list")
+    public String showServicesList(@RequestParam String stringCarId, Model model, HttpServletRequest request) {
+        long carId = Long.parseLong(stringCarId);
+        List<Service> allCarServices = serviceRepository.findAllByCarId(carId);
+        model.addAttribute("serviceList", allCarServices);
         return "services-list";
     }
 
     @GetMapping("/add")
-    public String addService(Model model, HttpServletRequest request) {
+    public String addService(Model model) {
         model.addAttribute("service", new Service());
-        long userId = User.getUserIdFromSession(request);
         return "service-form";
     }
 
@@ -67,7 +72,7 @@ public class ServiceController {
     @RequestMapping("/edit/{id}")
     public String editService (@PathVariable long id, Model model, HttpServletRequest request) {
         long userId = User.getUserIdFromSession(request);
-        Service service = serviceRepository.findById(userId)
+        Service service = serviceRepository.findById(id)
                 .orElse(new Service());
         if (service.getUser().getId() == userId) {
             model.addAttribute("service", service);
@@ -77,11 +82,11 @@ public class ServiceController {
         }
     }
 
-    @RequestMapping("/delete/[id}")
+    @RequestMapping("/delete/{id}")
     public String deleteService(@PathVariable long id, HttpServletRequest request) {
         long userId = User.getUserIdFromSession(request);
-        Optional<Service> serviceById = serviceRepository.findById(userId);
-        Service service = serviceById.orElse(null);
+        Optional<Service> serviceById = serviceRepository.findById(id);
+        Service service = serviceById.orElse(new Service());
         if (userId == service.getUser().getId()) {
             serviceById.ifPresent(serviceRepository::delete);
         }
