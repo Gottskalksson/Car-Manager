@@ -44,6 +44,7 @@
     <input type="submit" value="Zapisz">
 
 </form:form>
+<a href="${pageContext.request.contextPath}/dashboard/services/list">Powrót do listy</a>
 
 </body>
 </html>

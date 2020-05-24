@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="pl">
 <head>
@@ -17,7 +18,7 @@
         <div class="card card-block w-25 mx-auto">
             <h2>Ostatnie 5 serwisów:</h2>
             <c:forEach items="${serviceList}" var="service">
-                <p>${service.serviceDate}</p>
+                <p><spring:eval expression="service.serviceDate"/></p>
                 <p>${service.car.plateNumber}</p>
                 <p>${service.car.brand} ${service.car.model}</p>
                 <p>${service.description}</p>
