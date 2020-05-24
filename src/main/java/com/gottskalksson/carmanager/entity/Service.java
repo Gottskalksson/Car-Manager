@@ -1,6 +1,7 @@
 package com.gottskalksson.carmanager.entity;
 
 import lombok.Getter;
+import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.util.Date;
 @Entity
 @Table(name = "services")
 @Getter
+@Setter
 public class Service {
 
     @Id
@@ -45,40 +47,9 @@ public class Service {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     private Date serviceDate;
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setCar(Car car) {
-        this.car = car;
-    }
-
-    public void setTypeService(String typeService) {
-        this.typeService = typeService;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setPriceForItems(double priceForItems) {
-        this.priceForItems = priceForItems;
-    }
-
-    public void setPriceForJob(double priceForJob) {
-        this.priceForJob = priceForJob;
-    }
-
     public void setTotalPrice() {
         DecimalFormat df = new DecimalFormat("0.00");
         this.totalPrice = df.format(this.priceForItems + this.priceForJob);
     }
 
-    public void setServiceDate(Date serviceDate) {
-        this.serviceDate = serviceDate;
-    }
 }

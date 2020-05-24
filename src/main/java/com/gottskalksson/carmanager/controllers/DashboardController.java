@@ -1,11 +1,8 @@
 package com.gottskalksson.carmanager.controllers;
 
-import com.gottskalksson.carmanager.entity.Car;
 import com.gottskalksson.carmanager.entity.Service;
 import com.gottskalksson.carmanager.entity.User;
-import com.gottskalksson.carmanager.repositories.CarRepository;
 import com.gottskalksson.carmanager.repositories.ServiceRepository;
-import com.gottskalksson.carmanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -26,14 +23,10 @@ import java.util.List;
 public class DashboardController {
 
     private final ServiceRepository serviceRepository;
-    private final UserRepository userRepository;
-    private final CarRepository carRepository;
 
     @Autowired
-    public DashboardController(final ServiceRepository serviceRepository, final UserRepository userRepository, final CarRepository carRepository) {
+    public DashboardController(final ServiceRepository serviceRepository) {
         this.serviceRepository = serviceRepository;
-        this.userRepository = userRepository;
-        this.carRepository = carRepository;
     }
 
     @GetMapping("/dashboard")
