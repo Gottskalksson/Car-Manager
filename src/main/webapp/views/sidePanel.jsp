@@ -3,7 +3,7 @@
     <div class="col-sm-2 my-auto">
         <table>
             <ul>
-                <li><a href="/edit">Edycja konta</a> </li>
+                <li><a href="/dashboard/user/edit">Edycja konta</a> </li>
                 <li><a href="/dashboard/services/add">Dodaj serwis</a> </li>
                 <li><a href="/dashboard/services/list">Lista serwisów</a></li>
                 <li><a href="/dashboard/cars/list">Lista samochodów</a></li>
