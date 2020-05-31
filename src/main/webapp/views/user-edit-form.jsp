@@ -11,7 +11,7 @@
 <form:form modelAttribute="user" method="post" action="/dashboard/user/edit">
     <form:label path="email">E-Mail: </form:label>
     <form:input path="email"/><br>
-    <form:errors path="email" cssClass="error"/><br>
+    <form:errors path="email" cssStyle="visibility: ${hidden}"/><br>
 
     <form:label path="name">Podaj swoje imię: </form:label>
     <form:input path="name"/><br>
