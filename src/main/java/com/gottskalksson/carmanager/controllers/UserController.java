@@ -26,19 +26,26 @@ public class UserController {
     }
 
     @GetMapping("/edit")
-    public String editUser (Model model, HttpSession session) {
+    public String editUser(Model model, HttpSession session) {
         User user = (User) session.getAttribute("user");
         model.addAttribute("user", user);
         return "user-edit-form";
     }
 
     @PostMapping("/edit")
-    public String updatedUser (@ModelAttribute @Valid User user, BindingResult result) {
+    public String updatedUser(@ModelAttribute @Valid User user, BindingResult result, HttpSession session, Model model) {
 
-        if (!result.hasErrors()) {
+        User userFromSession = (User) session.getAttribute("user");
+        user.setPassword(userFromSession.getPassword());
+        boolean isTheSameUser = (userFromSession.getId() == userRepository.findByEmail(user.getEmail()).getId());
+        if ((result.getErrorCount() <= 2 && isTheSameUser)) {
             userRepository.save(user);
+            session.setAttribute("user", user);
             return "redirect:/dashboard";
         } else {
+            if (isTheSameUser) {
+                model.addAttribute("hidden", "hidden");
+            }
             return "user-edit-form";
         }
 
