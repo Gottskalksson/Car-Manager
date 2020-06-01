@@ -12,9 +12,6 @@
 <body>
 <div class="container">
     <div class="row h-100">
-        <%--        <div id="username" class="com-sm-2 my-auto">Witaj, ${userName}--%>
-        <%--            <%@include file="sidePanel.jsp" %>--%>
-        <%--        </div>--%>
         <div class="col-sm-10 my-auto">
             <form method="post">
                 Wybierz auto:

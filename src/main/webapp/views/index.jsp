@@ -10,10 +10,9 @@
 
 </head>
 <body>
-<div class="container">
-    <div class="row">
-        <div class="col-6"></div>
-        <div class="col-6">
+<div class="row h-100">
+    <div class="col-sm-12 my-auto">
+        <div class="card card-block w-25 mx-auto">
             <a href="/login">Zaloguj się</a>
             <a href="/register">Zarejestruj się</a>
         </div>

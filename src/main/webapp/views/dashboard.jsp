@@ -13,19 +13,16 @@
     <div class="col-sm-12 my-auto">
         <div class="card card-block w-25 mx-auto">
         <h1>Witaj, ${userName}</h1>
-            <%@include file="sidePanel.jsp" %>
+            <table>
+                <ul>
+                    <li><a href="/dashboard/user/edit">Edycja konta</a></li>
+                    <li><a href="/dashboard/services/add">Dodaj serwis</a></li>
+                    <li><a href="/dashboard/services/list">Lista serwisów</a></li>
+                    <li><a href="/dashboard/cars/list">Lista samochodów</a></li>
+                    <li><a href="/logout">Wyloguj się</a></li>
+                </ul>
+            </table>
         </div>
-<%--        <div class="col-md-10">--%>
-<%--            <h2>Ostatnie 5 serwisów:</h2>--%>
-<%--            <c:forEach items="${serviceList}" var="service">--%>
-<%--                <p><spring:eval expression="service.serviceDate"/></p>--%>
-<%--                <p>${service.car.plateNumber}</p>--%>
-<%--                <p>${service.car.brand} ${service.car.model}</p>--%>
-<%--                <p>${service.description}</p>--%>
-<%--                <p>${service.totalPrice}</p>--%>
-<%--                <p><a href="/dashboard/service/${service.id}">Szczegóły</a></p>--%>
-<%--            </c:forEach>--%>
-<%--        </div>--%>
     </div>
 </div>
 </body>
