@@ -10,12 +10,11 @@
 </head>
 <body>
 <div class="container">
-<div id="username">Witaj, ${userName}
-    <%@include file="sidePanel.jsp"%>
-</div>
-<div class="row h-100">
-    <div class="col-sm-6 my-auto">
-        <div class="card card-block w-25 mx-auto">
+    <div id="username" class="row">
+        <div class="col-md-2 mr-auto">Witaj, ${userName}
+            <%@include file="sidePanel.jsp" %>
+        </div>
+        <div class="col-md-10">
             <h2>Ostatnie 5 serwisów:</h2>
             <c:forEach items="${serviceList}" var="service">
                 <p><spring:eval expression="service.serviceDate"/></p>
@@ -27,7 +26,6 @@
             </c:forEach>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>
