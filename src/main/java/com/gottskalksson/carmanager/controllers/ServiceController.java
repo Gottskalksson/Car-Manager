@@ -44,7 +44,7 @@ public class ServiceController {
     @PostMapping("/list")
     public String showServicesList(@RequestParam String stringCarId, Model model, HttpServletRequest request) {
         long carId = Long.parseLong(stringCarId);
-        List<Service> allCarServices = serviceRepository.findAllByCarId(carId);
+        List<Service> allCarServices = serviceRepository.findAllByCarIdOrderByServiceDateDesc(carId);
         model.addAttribute("serviceList", allCarServices);
         return "services-list";
     }
