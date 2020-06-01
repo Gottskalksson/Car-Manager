@@ -8,43 +8,45 @@
 
 </head>
 <body>
-<div class="container">
-    <div id="username">Witaj, ${userName}
-        <%@include file="sidePanel.jsp"%>
+<div class="row h-100">
+    <div class="col-sm-12 my-auto">
+        <div class="card card-block w-50 mx-auto">
+
+
+            <form:form modelAttribute="service" method="post" action="/dashboard/services/add">
+
+                <form:label path="car">Wybierz auto: </form:label>
+                <form:select path="car" items="${cars}" itemLabel="plateNumber" itemValue="id"/><br>
+
+                <form:label path="typeService">Wybierz typ serwisu: </form:label>
+                <form:select path="typeService" items="${typeService}"/><br>
+
+                <form:label path="description">Opis serwisu: </form:label>
+                <form:textarea path="description"/><br>
+                <form:errors path="description" cssClass="errorMessage"/><br>
+
+                <form:label path="priceForItems">Cena za części: </form:label>
+                <form:input path="priceForItems"/><br>
+                <form:errors path="priceForItems" cssClass="errorMessage"/><br>
+
+                <form:label path="priceForJob">Cena za robociznę: </form:label>
+                <form:input path="priceForJob"/><br>
+                <form:errors path="priceForJob" cssClass="errorMessage"/><br>
+
+                <form:label path="serviceDate">Data serwisu: </form:label>
+                <form:input path="serviceDate"/><br>
+                <form:errors path="serviceDate" cssClass="errorMessage"/><br>
+
+
+                <form:hidden path="id"/>
+
+                <input type="submit" value="Zapisz">
+
+            </form:form>
+            <a href="${pageContext.request.contextPath}/dashboard/services/list">Powrót do listy</a>
+        </div>
     </div>
 </div>
-
-<form:form modelAttribute="service" method="post" action="/dashboard/services/add">
-
-    <form:label path="car">Wybierz auto: </form:label>
-    <form:select path="car" items="${cars}" itemLabel="plateNumber" itemValue="id" /><br>
-
-    <form:label path="typeService">Wybierz typ serwisu: </form:label>
-    <form:select path="typeService" items="${typeService}" /><br>
-
-    <form:label path="description">Opis serwisu: </form:label>
-    <form:textarea path="description" /><br>
-    <form:errors path="description" cssClass="errorMessage"/><br>
-
-    <form:label path="priceForItems">Cena za części: </form:label>
-    <form:input path="priceForItems" /><br>
-    <form:errors path="priceForItems" cssClass="errorMessage"/><br>
-
-    <form:label path="priceForJob">Cena za robociznę: </form:label>
-    <form:input path="priceForJob" /><br>
-    <form:errors path="priceForJob" cssClass="errorMessage"/><br>
-
-    <form:label path="serviceDate">Data serwisu: </form:label>
-    <form:input path="serviceDate"/><br>
-    <form:errors path="serviceDate" cssClass="errorMessage"/><br>
-
-
-    <form:hidden path="id"/>
-
-    <input type="submit" value="Zapisz">
-
-</form:form>
-<a href="${pageContext.request.contextPath}/dashboard/services/list">Powrót do listy</a>
 
 </body>
 </html>

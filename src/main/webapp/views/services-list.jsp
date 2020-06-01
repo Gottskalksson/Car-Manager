@@ -10,27 +10,32 @@
 
 </head>
 <body>
-<div id="username">Witaj, ${userName}
-    <%@include file="sidePanel.jsp" %>
-</div>
-<div class="row h-100">
-    <div class="col-sm-12 my-auto">
-        <form method="post">
-            <form:select name="stringCarId" path="cars" items="${cars}" itemLabel="plateNumber" itemValue="id"/>
-            <input type="submit" value="Sprawdź">
-        </form>
-        <div>
-            <div class="card card-block w-25 mx-auto">
+<div class="container">
+    <div class="row h-100">
+        <%--        <div id="username" class="com-sm-2 my-auto">Witaj, ${userName}--%>
+        <%--            <%@include file="sidePanel.jsp" %>--%>
+        <%--        </div>--%>
+        <div class="col-sm-10 my-auto">
+            <form method="post">
+                Wybierz auto:
+                <form:select name="stringCarId" path="cars" items="${cars}" itemLabel="plateNumber" itemValue="id"/>
+                <input type="submit" value="Sprawdź">
+                <a href="/dashboard">Powrót do strony głównej</a> <br>
+            </form>
+            <div class="container">
                 <h2 ${hidden}>Lista serwisów:</h2>
-                <c:forEach items="${serviceList}" var="service">
-                    <p>${service.car.plateNumber}</p>
-                    <p><spring:eval expression="service.serviceDate"/></p>
-                    <p>${service.car.brand}</p>
-                    <p>${service.description}</p>
-                    <p>${service.totalPrice}</p>
-                    <p><a href="/dashboard/services/edit/${service.id}">Edytuj</a></p>
-                    <p><a href="/dashboard/services/delete/${service.id}">Usuń</a></p>
-                </c:forEach>
+                <div class="row">
+                    <c:forEach items="${serviceList}" var="service">
+                        <div class="card card-block w-25 col-3">
+                            <p>${service.car.plateNumber}</p>
+                            <p><spring:eval expression="service.serviceDate"/></p>
+                            <p>${service.description}</p>
+                            <p>${service.totalPrice}</p>
+                            <p><a href="/dashboard/services/edit/${service.id}">Edytuj</a></p>
+                            <p><a href="/dashboard/services/delete/${service.id}">Usuń</a></p>
+                        </div>
+                    </c:forEach>
+                </div>
             </div>
         </div>
     </div>

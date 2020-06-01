@@ -10,47 +10,51 @@
 
 </head>
 <body>
-<%--<c:set var="now" value="<% = new java.util.Date() %>"/>--%>
-<form:form modelAttribute="car" method="post" action="/dashboard/cars/edit">
-    <form:label path="brand">Marka: </form:label>
-    <form:input path="brand"/><br>
-    <form:errors path="brand" cssClass="errorMessage"/><br>
+<div class="row h-100">
+    <div class="col-sm-12 my-auto">
+        <div class="card card-block w-50 mx-auto">
+            <form:form modelAttribute="car" method="post" action="/dashboard/cars/edit">
+                <form:label path="brand">Marka: </form:label>
+                <form:input path="brand"/><br>
+                <form:errors path="brand" cssClass="errorMessage"/><br>
 
-    <form:label path="model">Model: </form:label>
-    <form:input path="model"/><br>
-    <form:errors path="model" cssClass="errorMessage"/><br>
+                <form:label path="model">Model: </form:label>
+                <form:input path="model"/><br>
+                <form:errors path="model" cssClass="errorMessage"/><br>
 
-    <form:label path="plateNumber">Numer rejestracyjny: </form:label>
-    <form:input path="plateNumber"/><br>
-    <form:errors path="plateNumber" cssStyle="visibility: ${hidden}"/><br>
+                <form:label path="plateNumber">Numer rejestracyjny: </form:label>
+                <form:input path="plateNumber"/><br>
+                <form:errors path="plateNumber" cssStyle="visibility: ${hidden}"/><br>
 
-    <form:label path="yearProduction">Rok produkcji: </form:label>
-    <form:input path="yearProduction"/><br>
-    <form:errors path="yearProduction" cssClass="errorMessage"/><br>
+                <form:label path="yearProduction">Rok produkcji: </form:label>
+                <form:input path="yearProduction"/><br>
+                <form:errors path="yearProduction" cssClass="errorMessage"/><br>
 
-    <form:label path="engineCapacity">Pojemność silnika: </form:label>
-    <form:input path="engineCapacity"/><br>
-    <form:errors path="engineCapacity" cssClass="errorMessage"/><br>
+                <form:label path="engineCapacity">Pojemność silnika w cm<sup>3</sup>: </form:label>
+                <form:input path="engineCapacity"/><br>
+                <form:errors path="engineCapacity" cssClass="errorMessage"/><br>
 
-    <form:label path="horsePower">Moc KM: </form:label>
-    <form:input path="horsePower"/><br>
-    <form:errors path="horsePower" cssClass="errorMessage"/><br>
+                <form:label path="horsePower">Moc KM: </form:label>
+                <form:input path="horsePower"/><br>
+                <form:errors path="horsePower" cssClass="errorMessage"/><br>
 
-    <form:label path="motDate">Przegląd ważny do: </form:label>
-    <form:input path="motDate"/><br>
-    <form:errors path="motDate" cssClass="errorMessage"/><br>
+                <form:label path="motDate">Przegląd ważny do: </form:label>
+                <form:input path="motDate"/><br>
+                <form:errors path="motDate" cssClass="errorMessage"/><br>
 
-    <form:label path="insuranceDate">Ubezpieczenie ważne do: </form:label>
-    <form:input path="insuranceDate"/><br>
-    <form:errors path="insuranceDate" cssClass="errorMessage"/><br>
+                <form:label path="insuranceDate">Ubezpieczenie ważne do: </form:label>
+                <form:input path="insuranceDate"/><br>
+                <form:errors path="insuranceDate" cssClass="errorMessage"/><br>
 
-    <form:hidden path="id"/>
-    <%--    <form:hidden path="user"/>--%>
+                <form:hidden path="id"/>
 
-    <input type="submit" value="Zapisz">
+                <input type="submit" value="Zapisz">
 
-</form:form>
+            </form:form>
+            <a href="${pageContext.request.contextPath}/dashboard/cars/list">Powrót do listy</a>
+        </div>
+    </div>
+</div>
 
-<a href="${pageContext.request.contextPath}/dashboard/cars/list">Powrót do listy</a>
 </body>
 </html>

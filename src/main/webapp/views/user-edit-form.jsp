@@ -8,20 +8,27 @@
 
 </head>
 <body>
-<form:form modelAttribute="user" method="post" action="/dashboard/user/edit">
-    <form:label path="email">E-Mail: </form:label>
-    <form:input path="email"/><br>
-    <form:errors path="email" cssStyle="visibility: ${hidden}"/><br>
+<div class="row h-100">
+    <div class="col-sm-12 my-auto">
+        <div class="card card-block w-25 mx-auto">
 
-    <form:label path="name">Podaj swoje imię: </form:label>
-    <form:input path="name"/><br>
-    <form:errors path="name" cssClass="error"/><br>
+            <form:form modelAttribute="user" method="post" action="/dashboard/user/edit">
+                <form:label path="email">E-Mail: </form:label>
+                <form:input path="email"/><br>
+                <form:errors path="email" cssStyle="visibility: ${hidden}"/><br>
 
-    <form:hidden path="id"/>
+                <form:label path="name">Podaj swoje imię: </form:label>
+                <form:input path="name"/><br>
+                <form:errors path="name" cssClass="error"/><br>
 
-    <input type="submit" value="Załóż konto">
+                <form:hidden path="id"/>
 
-</form:form>
-<a href="${pageContext.request.contextPath}/dashboard/user/password">Zmiana hasła</a>
+                <input type="submit" value="Załóż konto">
+
+            </form:form>
+            <a href="${pageContext.request.contextPath}/dashboard/user/password">Zmiana hasła</a>
+        </div>
+    </div>
+</div>
 </body>
 </html>

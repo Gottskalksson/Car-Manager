@@ -9,9 +9,9 @@
 
 </head>
 <body>
-<div id="username">Witaj, ${userName}
-    <%@include file="sidePanel.jsp"%>
-</div>
+<%--<div id="username">Witaj, ${userName}--%>
+<%--    <%@include file="sidePanel.jsp"%>--%>
+<%--</div>--%>
 
 <a href="/dashboard/cars/add">Dodaj nowy samochód</a> <br>
 <a href="/dashboard">Powrót do strony głównej</a> <br>
