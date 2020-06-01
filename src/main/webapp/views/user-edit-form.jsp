@@ -23,10 +23,11 @@
 
                 <form:hidden path="id"/>
 
-                <input type="submit" value="Załóż konto">
+                <input type="submit" value="Zapisz">
 
             </form:form>
             <a href="${pageContext.request.contextPath}/dashboard/user/password">Zmiana hasła</a>
+            <a href="${pageContext.request.contextPath}/dashboard">Powrót do strony głównej</a>
         </div>
     </div>
 </div>

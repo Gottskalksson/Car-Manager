@@ -18,7 +18,7 @@
                 Stare hasło: <input type="password" name="oldPassword"><br>
                 Nowe hasło: <input type="password" name="newPassword1"><br>
                 Powtórz nowe hasło: <input type="password" name="newPassword2"><br>
-                <input type="submit" value="Send">
+                <input type="submit" value="Zapisz">
             </form>
 
         </div>
