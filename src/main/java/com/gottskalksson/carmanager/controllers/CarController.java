@@ -1,8 +1,10 @@
 package com.gottskalksson.carmanager.controllers;
 
 import com.gottskalksson.carmanager.entity.Car;
+import com.gottskalksson.carmanager.entity.Service;
 import com.gottskalksson.carmanager.entity.User;
 import com.gottskalksson.carmanager.repositories.CarRepository;
+import com.gottskalksson.carmanager.repositories.ServiceRepository;
 import com.gottskalksson.carmanager.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -25,11 +27,13 @@ public class CarController {
 
     private final CarRepository carRepository;
     private final UserRepository userRepository;
+    private final ServiceRepository serviceRepository;
 
     @Autowired
-    public CarController(final CarRepository carRepository, final UserRepository userRepository) {
+    public CarController(final CarRepository carRepository, final UserRepository userRepository, final ServiceRepository serviceRepository) {
         this.carRepository = carRepository;
         this.userRepository = userRepository;
+        this.serviceRepository = serviceRepository;
     }
 
     @GetMapping("/add")
@@ -95,6 +99,8 @@ public class CarController {
         Optional<Car> carToDelete = carRepository.findById(id);
         Car car = carToDelete.orElse(new Car());
         if (userId == car.getUser().getId()) {
+            List<Service> allByCarId = serviceRepository.findAllByCarIdOrderByServiceDateDesc(id);
+            allByCarId.forEach(serviceRepository::delete);
             carToDelete.ifPresent(carRepository::delete);
         }
         return "redirect:/dashboard/cars/list";
