@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.Year;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -38,7 +39,11 @@ public class CarController {
 
     @GetMapping("/add")
     public String addNewCar(Model model) {
-        model.addAttribute("car", new Car());
+        Car car = new Car();
+        car.setMotDate(new Date());
+        car.setInsuranceDate(new Date());
+        car.setYearProduction(Year.now());
+        model.addAttribute("car", car);
         return "car-form";
     }
 
