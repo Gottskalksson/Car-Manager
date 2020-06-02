@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -51,7 +52,9 @@ public class ServiceController {
 
     @GetMapping("/add")
     public String addService(Model model) {
-        model.addAttribute("service", new Service());
+        Service service = new Service();
+        service.setServiceDate(new Date());
+        model.addAttribute("service", service);
         return "service-form";
     }
 
