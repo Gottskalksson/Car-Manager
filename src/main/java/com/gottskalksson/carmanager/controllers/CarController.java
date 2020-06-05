@@ -111,6 +111,13 @@ public class CarController {
         return "redirect:/dashboard/cars/list";
     }
 
+    @GetMapping("/{id}")
+    @ResponseBody
+    public String getCar (@PathVariable long id) {
+        Optional<Car> carById = carRepository.findById(id);
+        return carById.orElse(null).getMotDate().toString();
+    }
+
     @ModelAttribute("userName")
     public String userName(HttpServletRequest request) {
         try {

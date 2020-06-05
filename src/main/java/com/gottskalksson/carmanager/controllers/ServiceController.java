@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.validation.constraints.FutureOrPresent;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,13 +59,19 @@ public class ServiceController {
     }
 
     @PostMapping("/add")
-    public String validateServiceForm(@ModelAttribute @Valid Service service, BindingResult result, HttpServletRequest request) {
+    public String validateServiceForm(@ModelAttribute @Valid Service service, BindingResult result,
+                                      HttpServletRequest request, @RequestParam @FutureOrPresent Date motDate) {
         if (!result.hasErrors()) {
             long userId = User.getUserIdFromSession(request);
             Optional<User> findById = userRepository.findById(userId);
             service.setUser(findById.orElse(null));
             service.setTotalPrice();
             serviceRepository.save(service);
+
+            Car car = service.getCar();
+            car.setMotDate(motDate);
+            carRepository.save(car);
+
             return "redirect:/dashboard/services/list";
         } else {
             return "service-form";
@@ -73,7 +79,7 @@ public class ServiceController {
     }
 
     @RequestMapping("/edit/{id}")
-    public String editService (@PathVariable long id, Model model, HttpServletRequest request) {
+    public String editService(@PathVariable long id, Model model, HttpServletRequest request) {
         long userId = User.getUserIdFromSession(request);
         Service service = serviceRepository.findById(id)
                 .orElse(new Service());
@@ -97,7 +103,6 @@ public class ServiceController {
     }
 
 
-
     @ModelAttribute("userName")
     public String userName(HttpServletRequest request) {
         try {
@@ -115,7 +120,7 @@ public class ServiceController {
 
     @ModelAttribute("typeService")
     public List<String> typeServices() {
-        ArrayList<String> typeServices  = new ArrayList<>();
+        ArrayList<String> typeServices = new ArrayList<>();
         typeServices.add("Przegląd");
         typeServices.add("Wymiana/Naprawa");
         return typeServices;
