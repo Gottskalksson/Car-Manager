@@ -13,6 +13,10 @@
 
 </head>
 <body>
+
+<jsp:include page="headerForMainMenu.jsp"></jsp:include>
+
+
 <div class="container">
     <h1 class="title">Załóż konto</h1>
 </div>

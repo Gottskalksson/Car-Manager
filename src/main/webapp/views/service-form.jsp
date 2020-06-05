@@ -9,6 +9,9 @@
 
 </head>
 <body>
+
+<jsp:include page="header.jsp"></jsp:include>
+
 <div class="row h-100">
     <div class="col-sm-12 my-auto">
         <div class="card card-block w-50 mx-auto">

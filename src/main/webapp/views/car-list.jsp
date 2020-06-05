@@ -9,6 +9,9 @@
 
 </head>
 <body>
+
+<jsp:include page="header.jsp"></jsp:include>
+
 <a href="/dashboard/cars/add">Dodaj nowy samochód</a> <br>
 <a href="/dashboard">Powrót do strony głównej</a> <br>
 <br>

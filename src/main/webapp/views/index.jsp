@@ -10,11 +10,12 @@
 
 </head>
 <body>
+
+<jsp:include page="headerForMainMenu.jsp"></jsp:include>
+
 <div class="row h-100">
     <div class="col-sm-12 my-auto">
         <div class="card card-block w-25 mx-auto">
-            <a href="/login">Zaloguj się</a>
-            <a href="/register">Zarejestruj się</a>
         </div>
     </div>
 </div>
