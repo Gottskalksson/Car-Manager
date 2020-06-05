@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="pl">
 <head>
@@ -19,7 +20,10 @@
                 <form:select path="car" items="${cars}" itemLabel="plateNumber" itemValue="id"/><br>
 
                 <form:label path="typeService">Wybierz typ serwisu: </form:label>
-                <form:select path="typeService" items="${typeService}"/><br>
+                <form:select path="typeService" items="${typeService}"/>
+
+                <label class="label mot" id="motLabel" style="visibility: visible">Data ważności przeglądu</label>
+                <input type="text" id="motDate" name="motDate" style="visibility: visible"><br>
 
                 <form:label path="description">Opis serwisu: </form:label>
                 <form:textarea path="description"/><br>
@@ -47,6 +51,9 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<c:url value="/resources/app.js" />"></script>
 
 </body>
 </html>
