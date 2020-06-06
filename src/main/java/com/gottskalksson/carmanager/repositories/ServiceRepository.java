@@ -9,5 +9,7 @@ public interface ServiceRepository extends JpaRepository<Service, Long> {
 
     List<Service> findFirst5ByUserIdOrderByIdDesc(long id);
 
+    List<Service> findAllByUserIdOrderByServiceDateDesc(long id);
+
     List<Service> findAllByCarIdOrderByServiceDateDesc(long id);
 }
