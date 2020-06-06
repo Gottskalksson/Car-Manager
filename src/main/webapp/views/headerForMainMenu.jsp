@@ -2,7 +2,7 @@
 <%@ page pageEncoding="UTF-8" %>
 <header>
     <nav class="navbar navbar-dark bg-primary navbar-expand-md">
-        <a class="navbar-brand" href="/dashboard"><img src="<c:url value="/resources/car-logo.png" />" width="30" height="30"
+        <a class="navbar-brand" href="/"><img src="<c:url value="/resources/car-logo.png" />" width="30" height="30"
                                                        alt="">CarManager</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu" aria-controls="mainmenu" aria-expanded="false">
             <span class="navbar-toggler-icon">

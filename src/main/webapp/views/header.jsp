@@ -15,7 +15,7 @@
                     <a class="nav-link" href="/dashboard">Start</a>
                 </li>
                 <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                    <a class="nav-link dropdown-toggle" href="/dashboard#" data-toggle="dropdown" role="button" aria-expanded="false"
                        id="carsubmenu" aria-haspopup="true">Samochody</a>
 
                     <div class="dropdown-menu" aria-labelledby="carsubmenu">
@@ -25,7 +25,7 @@
 
                 </li>
                 <li class="nav-item dropdown active">
-                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-expanded="false"
+                    <a class="nav-link dropdown-toggle" href="/dashboard#" data-toggle="dropdown" role="button" aria-expanded="false"
                        id="servicessubmenu" aria-haspopup="true">Serwisy</a>
 
                     <div class="dropdown-menu" aria-labelledby="servicessubmenu">

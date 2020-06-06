@@ -10,12 +10,12 @@
 <body>
 <div class="container">
     <div class="row justify-content-around">
-        <div class="col-10 align-self-center">
-<%--            <div class="card card-block w-25 mx-auto">--%>
+        <div class="col-10 h-100 align-self-center">
+            <div class="card card-block w-25 mx-auto">
                 <h1>Coś poszło nie tak :< </h1>
                 <h2>Ale nie martw się - jeszcze będzie przepięknie...</h2>
                 <a href="/">Strona główna</a>
-<%--            </div>--%>
+            </div>
         </div>
     </div>
 </div>
