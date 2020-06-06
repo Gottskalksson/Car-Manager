@@ -18,32 +18,44 @@
 
 
 <div class="container">
-    <h1 class="title">Załóż konto</h1>
-</div>
-<div class="row h-100">
-    <div class="col-sm-12 my-auto">
-        <div class="card card-block w-25 mx-auto">
-<form:form modelAttribute="user" method="post" action="/register">
-    <form:label path="email">E-Mail: </form:label>
-    <form:input path="email"/><br>
-    <form:errors path="email" cssClass="error"/><br>
+    <div class="row h-100">
+        <div class="col-sm-12 my-auto">
+            <h1 class="title">Załóż konto</h1>
+            <div class="card card-block w-25 mx-auto">
+                <form:form modelAttribute="user" method="post" action="/register">
+                    <div class="form-group">
+                        <form:label path="email">E-Mail: </form:label>
+                        <form:input cssClass="form-control" path="email"/><br>
+                        <form:errors path="email" cssClass="error"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="password">Hasło: </form:label>
+                        <form:password cssClass="form-control" path="password"/><br>
+                        <form:errors path="password" cssClass="error"/>
+                    </div>
+                    <div class="form-group">
+                        <form:label path="name">Podaj swoje imię: </form:label>
+                        <form:input cssClass="form-control" path="name"/><br>
+                        <form:errors path="name" cssClass="error"/>
+                    </div>
+                    <form:hidden path="id"/>
 
-    <form:label path="password">Hasło: </form:label>
-    <form:password path="password"/><br>
-    <form:errors path="password" cssClass="error"/><br>
+                    <input type="submit" class="btn-success" value="Załóż konto">
 
-    <form:label path="name">Podaj swoje imię: </form:label>
-    <form:input path="name"/><br>
-    <form:errors path="name" cssClass="error"/><br>
-
-    <form:hidden path="id"/>
-
-    <input type="submit" value="Załóż konto">
-
-</form:form>
+                </form:form>
+            </div>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
 </body>
 </html>
