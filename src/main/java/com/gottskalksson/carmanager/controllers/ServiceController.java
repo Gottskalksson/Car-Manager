@@ -38,14 +38,8 @@ public class ServiceController {
 
     @GetMapping("/list")
     public String servicesList(Model model, HttpServletRequest request) {
-        model.addAttribute("hidden", "hidden");
-        return "services-list";
-    }
-
-    @PostMapping("/list")
-    public String showServicesList(@RequestParam String stringCarId, Model model, HttpServletRequest request) {
-        long carId = Long.parseLong(stringCarId);
-        List<Service> allCarServices = serviceRepository.findAllByCarIdOrderByServiceDateDesc(carId);
+        long userIdFromSession = User.getUserIdFromSession(request);
+        List<Service> allCarServices = serviceRepository.findAllByUserIdOrderByServiceDateDesc(userIdFromSession);
         model.addAttribute("serviceList", allCarServices);
         return "services-list";
     }
