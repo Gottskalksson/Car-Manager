@@ -17,14 +17,14 @@ $(function () {
             checkboxes[i].checked = true;
         }
         services.forEach(function (e) {
-            e.style.display = "block";
+            e.style = "";
         })
     });
     uncheckedAll.on("click", function () {
         for (var i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = false;
         }
-        console.log(services);
+
         services.forEach(function (e) {
             e.style.display = "none";
         })
