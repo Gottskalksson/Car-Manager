@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <link type="text/css" rel="stylesheet" href="/resources/main.css">
 </head>
 <body>
 
@@ -35,7 +36,7 @@
                     <form:label cssClass="control-label col-sm-2" path="plateNumber">Numer rejestracyjny: </form:label>
                     <div class="col-sm-10">
                         <form:input cssClass="control-form" path="plateNumber"/><br>
-                        <form:errors path="plateNumber" cssStyle="visibility: ${hidden}"/></div>
+                        <form:errors path="plateNumber" cssClass="errorMessage" cssStyle="visibility: ${hidden}"/></div>
                 </div>
 
                 <div class="form-group">
